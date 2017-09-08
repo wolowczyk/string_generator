@@ -25,7 +25,7 @@ class StringGeneratorView(APIView):
         string_generator = StringGenerator.objects.get(generator_id=pk)
         serializer = StringGeneratorSerializer(string_generator)
         template = str(serializer.data['template'])
-        pars = ("appleAAA", "BBB")
+        pars = serializer.data['par']
         template_file = serializer.data['template_file']
         if template != '':
             content = template
