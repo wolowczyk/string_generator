@@ -26,6 +26,7 @@ class StringGeneratorView(APIView):
         serializer = StringGeneratorSerializer(string_generator)
         template = str(serializer.data['template'])
         pars = serializer.data['par']
+        args = pars.split(',')
         template_file = serializer.data['template_file']
         if template != '':
             content = template
@@ -33,5 +34,5 @@ class StringGeneratorView(APIView):
             content = open(template_file).read()
         else:
             content = "Error: no template to display."
-        string = content.format(pars)
+        string = content.format(*args)
         return Response({'string': string})
