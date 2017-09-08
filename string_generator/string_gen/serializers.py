@@ -6,4 +6,4 @@ class StringGeneratorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = StringGenerator
-        fields = ('template', 'par')
+        fields = ('template', 'par', 'template_file')
